@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table_style.css') }}">
+</head>
+<body>
+<h1>Game</h1>
+    <form id="wordForm" action="/game/{{ letters }}" method="post">
+        <label for="word">Enter a word:</label>
+        <input type="text" id="word" name="word" required>
+        <button type="submit">Submit</button>
+    </form>    <div class="table-container">
+    <p>{{ entered_words }}</p>
+    <p>{{ count_of_words_entered }}</p>
+        <table>
+            <tbody>
+            {% for i in range(entered_words|length) %}
+                <tr>
+                    {% for j in range(word|length) %}
+                        <td style="background-color: {{color_map[i][j]}};">{{entered_words[i][j]}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            {% for row in range(attemps) %}
+            <tr>
+                    {% for i in range(letters) %}
+                <td class="letter">=</td>
+                    {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+</div>
+</body>
+</html>

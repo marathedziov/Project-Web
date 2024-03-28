@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Делаем контейнер по вертикали во всю высоту экрана */
+    flex-direction: column; /* Устанавливаем направление элементов в столбец */
+}
+
+.buttons {
+    text-align: center;
+}
+
+.green-button {
+    padding: 1em 5em; /* Используем em для задания относительных размеров */
+    margin: 1em;
+    font-size: 2em;
+    background-color: #4CAF50; /* Зеленый цвет */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 0.5em;
+    width: 130px;
+    display: block; /* Чтобы кнопки занимали всю ширину контейнера */
+}
+
+.green-button span {
+    display: block;
+}
+
+.green-button:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+}
+
+/* Медиа-запрос для адаптивности */
+@media screen and (max-width: 600px) {
+    .green-button {
+        width: 80%; /* Используем проценты для ширины кнопок */
+        font-size: 1.5em; /* Изменяем размер текста для маленьких экранов */
+    }
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; /* Чтобы использовать Montserrat-Black */
+}

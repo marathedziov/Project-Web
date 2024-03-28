@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Готов ли ты завести кота</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <div class="container-fluid"><a class="navbar-brand" href="/">Готов ли ты завести кота</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBasic"
+                    aria-controls="navbarBasic" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span></button>
+        </div>
+    </nav>
+</header>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+<main class="container">
+    <div class="row">
+        <div class="col-md-12"><h1 class="page-header">А вот и результаты</h1>
+        </div>
+        <div class="col-md-12">
+            <h3>{% if percentage < 11 %} Домохозяйству крайне не рекомендуется заводить кота. Возможно, у них нет
+                достаточного пространства, финансовых средств или времени для ухода за животным.</h3>
+            <h3>{% elif percentage < 31 and percentage > 12 %} Вероятность низкая. Домохозяйство должно серьезно
+                подумать о том, готовы ли они к ответственности за кота.</h3>
+            <h3>{% elif percentage < 51 and percentage > 32 %} Вероятность относительно низкая. Домохозяйство может
+                рассмотреть вопрос о заведении кота, но им необходимо уделить время на подготовку и планирование. </h3>
+            <h3>{% elif percentage < 71 and percentage > 52 %} Вероятность средняя. Домохозяйство имеет потенциал для
+                успешного ухода за котом, но им все равно нужно учитывать различные факторы, прежде чем принять
+                решение. </h3>
+            <h3>{% elif percentage < 91 and percentage > 72 %} Вероятность высокая. Домохозяйство готово и способно
+                заботиться о коте, и шансы на успешное взаимодействие с животным высоки. </h3>
+            <h3>{% elif percentage < 100 and percentage > 92 %} Домохозяйство абсолютно готово завести кота. У них есть
+                необходимое пространство, финансы и время для ухода за животным, и они могут смело принимать такое
+                решение. </h3>
+            <h3>{% endif %}</h3>
+            <h3>{{ percentage }}%</h3>
+        </div>
+    </div>
+</main>
+</body>
+</html>
