@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Делаем контейнер по вертикали во всю высоту экрана */
+    height: 90vh; /* Делаем контейнер по вертикали во всю высоту экрана */
     flex-direction: column; /* Устанавливаем направление элементов в столбец */
 }
 
@@ -42,3 +42,13 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900; /* Чтобы использовать Montserrat-Black */
 }
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; /* Делаем контейнер по вертикали во всю высоту экрана */
+    flex-direction: column; /* Устанавливаем направление элементов в столбец */
+}
+
+

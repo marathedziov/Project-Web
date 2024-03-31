@@ -1,16 +1,7 @@
-import random
-import sqlite3
-
-
-from flask import Flask, render_template, request
-
-
+from flask import Flask, render_template, request, redirect
 from lib_iron.class_sort_iron import dict_word
-
-word = dict_word("хъӕд").list()
-print(word)
-#!!!!!!!!!!!!!!!
-
+from data import db_session
+from data.word import Word
 
 app = Flask(__name__)
 
@@ -18,9 +9,6 @@ attemps = 7
 count_of_words_entered = 0
 entered_words = []
 
-
-from data import db_session
-from data.word import Word
 
 
 
@@ -30,9 +18,9 @@ db_session.global_init("db/irondle.db")
 session = db_session.create_session()
 
 
-first_word = session.query(Word).all()
-if first_word:
-    secret_word = first_word[0].iron_word
+random_word = session.query(Word).all()
+if random_word:
+    secret_word = random_word[0].iron_word
     print(secret_word)
 
 
@@ -62,8 +50,12 @@ def game(letters):
             attemps -= 1
             count_of_words_entered += 1
             color_map.append(check_guess(word, secret_word))
-            print(color_map)
-            return render_template('game.html', letters=letters, word=dict_word(word).list(), entered_words=entered_words, count_of_words_entered=count_of_words_entered, attemps=attemps, color_map=color_map)
+            if check_guess(word, secret_word) == ['green', 'green', 'green']:
+                print(color_map)
+                return redirect('/viktory')
+            return render_template('game.html', letters=letters, word=dict_word(word).list(),
+                                   entered_words=entered_words, count_of_words_entered=count_of_words_entered,
+                                   attemps=attemps, color_map=color_map)
 
     return render_template('game.html', letters=letters, word='='*letters, attemps=attemps, color_map=color_map, entered_words=entered_words)
 
@@ -93,6 +85,29 @@ def check_guess(user_word, secret_word):
             result.append('grey')
 
     return result
+
+
+@app.route('/viktory')
+def victory_screen():
+    global color_map
+
+    modernized_color_map = []
+
+    for round_map in color_map:
+        modernized_round = []
+        for color in round_map:
+            if color == 'grey':
+                color = '⬛'
+            elif color == 'yellow':
+                color = '🟨'
+            elif color == 'green':
+                color = '🟩'
+            modernized_round.append(color)
+        modernized_color_map.append(" ".join(modernized_round))
+
+    print("\n".join(modernized_color_map))
+    modernized_color_map = "\n".join(modernized_color_map)
+    return render_template('viktory.html', color_map=color_map, modernized_color_map=modernized_color_map, al='1111')
 
 
 

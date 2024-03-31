@@ -1,0 +1,74 @@
+<!-- templates/victory_screen.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle - Победа!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_viktory_html.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Поздравляем! Вы выиграли!</h1>
+        <div class="buttons">
+            <button onclick="next()">Следующий раунд</button>
+            <button onclick="copyReport({{ color_map }})">Скопировать отчет об игре</button>
+            <button onclick="showLeaderboard()">Таблица лидеров</button>
+        </div>
+    </div>
+    <div class="table-container">
+            <table>
+                <tbody>
+                    {%for i in range(color_map|length)%}
+                        <tr>
+                            {% for j in range(color_map[0]|length) %}
+                                <td style="background-color: {{color_map[i][j]}};"></td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    <script>
+        function next() {
+            // Реализация функциональности для кнопки "Далее"
+            // Например, перенаправление на следующий уровень игры или новую игру
+            // window.location.href = "/next_page";
+        }
+
+        function copyReport(color_map) {
+            const colorCodes = {
+                'grey': '⬛',
+                'yellow': '🟨',
+                'green': '🟩'
+            };
+
+            const transformedReport = color_map.map(row => row.map(color => colorCodes[color]).join(' ')).join('\n');
+
+            // Копируем результат в буфер обмена
+            navigator.clipboard.writeText(transformedReport)
+                .then(() => {
+                    alert('Результат скопирован в буфер обмена');
+                    console.log('Результат скопирован в буфер обмена');
+                })
+                .catch(err => console.error('Не удалось скопировать результат в буфер обмена:', err));
+
+            return transformedReport;
+        }
+
+        function showLeaderboard() {
+            const leaderboardDiv = document.getElementById('leaderboard');
+            leaderboardDiv.innerHTML = '{{ leaderboard }}';  // Передача HTML-кода таблицы из Flask
+
+            // Стилизация ячеек таблицы, чтобы они были квадратными
+            const cells = leaderboardDiv.querySelectorAll('td');
+            cells.forEach(cell => {
+                cell.style.width = '50px';  // Задайте здесь желаемую ширину и высоту ячейки
+                cell.style.height = '50px';
+            });
+        }
+    </script>
+</body>
+</html>
