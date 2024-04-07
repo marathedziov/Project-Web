@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="static/css/crossword.css">
+<!--<div class="margin-block">-->
+<!--<table id="myTable"></table>-->
+
+<!--<script>-->
+<!--    var table = document.getElementById('myTable');-->
+
+<!--    for (var i = 0; i < 10; i++) {-->
+<!--        var row = table.insertRow();-->
+<!--        for (var j = 0; j < 10; j++) {-->
+<!--            var cell = row.insertCell();-->
+<!--            cell.id = 'cell_' + i + '_' + j;-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+<!--</div>-->
+<div class="margin-block">
+<table class="table">
+{% for line in cross %}
+    <tr>
+        {% for el in line %}
+            {% if el%}
+                {% if el[-1] == "*"%}
+                    <td class="td" contenteditable='true' style="border: 3px solid black">{{el[:-1]}}</td>
+                {% else %}
+                    <td class="td" contenteditable='true'>{{el}}</td>
+                {% endif %}
+            {% else %}
+                <td class="tdd"></td>
+            {% endif %}
+        {% endfor %}
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
+</div>

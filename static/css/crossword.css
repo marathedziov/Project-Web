@@ -1,0 +1,31 @@
+.margin-block {
+        margin-top:50px;
+        text-align: center;
+        }
+.table {
+        border-collapse: collapse;
+        width: 90%;
+        margin: auto;
+        font-family: Tahoma;
+    }
+.td {
+        width: 10%;
+        border: 1px solid black;
+        box-sizing: border-box;
+        }
+.tdd {
+        width: 10%;
+        border: none;
+    }
+.button {
+  display: inline-block;
+  background: #2196f3;
+  color: #fff;
+  padding: 10%;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: Tahoma;
+  font-size: 300%;
+  line-height: 1;
+  font-weight: 100;
+}

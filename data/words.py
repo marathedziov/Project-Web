@@ -12,5 +12,6 @@ class Words(SqlAlchemyBase):
     description = sqlalchemy.Column(sqlalchemy.String)
     word_rus = sqlalchemy.Column(sqlalchemy.String)
     place = sqlalchemy.Column(sqlalchemy.Integer)
+    coords = sqlalchemy.Column(sqlalchemy.String)
     id_cross = sqlalchemy.Column(sqlalchemy.Integer,
                                  sqlalchemy.ForeignKey("crosswords.id"))
