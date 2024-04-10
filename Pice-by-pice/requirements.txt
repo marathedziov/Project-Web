@@ -1,7 +1,0 @@
-SQLAlchemy
-werkzeug
-wtforms
-pygame
-flask
-flask_wtf
-flask_login
