@@ -16,6 +16,7 @@
 .tdd {
         width: 10%;
         border: none;
+        text-align: right;
     }
 .button {
   display: inline-block;
@@ -28,4 +29,8 @@
   font-size: 300%;
   line-height: 1;
   font-weight: 100;
+}
+.question {
+    margin-top:50px;
+
 }

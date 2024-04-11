@@ -54,14 +54,17 @@ def crossword1():
     matrix = [[''] * 9 for i in range(9)]
     db_sess = db_session.create_session()
     crossds = db_sess.query(Words).filter(Words.id_cross == 1)
+    descr = crossds.description
 
-    for cross in crossds:
+    for ind, cross in enumerate(crossds):
         word = cross.word_iron.split()
         x, y = map(int, cross.coords.split())
         place = int(cross.place)
         for i in range(len(word)):
+            if i == 0:
+                matrix[y][x - 1] = str(ind + 1)
             if i == place:
-                matrix[y][x + i] = word[i] + '*'
+                matrix[y][x + i] = word[i].lower()
             else:
                 matrix[y][x + i] = word[i]
 

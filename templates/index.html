@@ -21,9 +21,11 @@
 {% for line in cross %}
     <tr>
         {% for el in line %}
-            {% if el%}
-                {% if el[-1] == "*"%}
-                    <td class="td" contenteditable='true' style="border: 3px solid black">{{el[:-1]}}</td>
+            {% if el %}
+                {% if el.islower()%}
+                    <td class="td" contenteditable='true' style="border: 3px solid black">{{el.upper()}}</td>
+                {% elif el.isdigit()%}
+                    <td class="tdd">{{el}}</td>
                 {% else %}
                     <td class="td" contenteditable='true'>{{el}}</td>
                 {% endif %}
@@ -33,6 +35,9 @@
         {% endfor %}
 </tr>
 {% endfor %}
+     <div class="question">
+
+    </div>
 </table>
 {% endblock %}
 </div>
