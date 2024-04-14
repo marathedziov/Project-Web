@@ -46,7 +46,7 @@ def logout():
 
 @app.route("/")
 def index():
-    return render_template("start.html", cross=None)
+    return render_template("start.html", current_user=current_user)
 
 
 @app.route("/crossword1")
@@ -54,7 +54,7 @@ def crossword1():
     matrix = [[''] * 9 for i in range(9)]
     db_sess = db_session.create_session()
     crossds = db_sess.query(Words).filter(Words.id_cross == 1)
-    descr = crossds.description
+    descr = list(map(lambda x: x.description, crossds))
 
     for ind, cross in enumerate(crossds):
         word = cross.word_iron.split()
@@ -69,8 +69,15 @@ def crossword1():
                 matrix[y][x + i] = word[i]
 
     pprint.pprint(matrix)
-    return render_template("index.html", cross=matrix)
+    return render_template("index.html", cross=matrix, descr=descr)
 
+
+@app.route('/check', methods=['GET', 'POST'])
+def check():
+    if request.method == 'POST':
+        res = request.form['ans']
+        return render_template("index.html", res=res)
+    return redirect('/')
 
 @app.route('/news', methods=['GET', 'POST'])
 @login_required
@@ -140,7 +147,7 @@ def news_delete(id):
 
 
 @app.route('/register', methods=['GET', 'POST'])
-def reqister():
+def register():
     form = RegisterForm()
     if form.validate_on_submit():
         if form.password.data != form.password_again.data:

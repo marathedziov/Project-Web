@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<form method="POST">
 <link rel="stylesheet" href="static/css/crossword.css">
 <!--<div class="margin-block">-->
 <!--<table id="myTable"></table>-->
@@ -23,21 +24,40 @@
         {% for el in line %}
             {% if el %}
                 {% if el.islower()%}
-                    <td class="td" contenteditable='true' style="border: 3px solid black">{{el.upper()}}</td>
+                    <td class="td" style="border: 3px solid black">
+                        <input style="font-weight:bold;" maxlength="2" oninput="this.value = this.value.toUpperCase()"/>
+                    </td>
                 {% elif el.isdigit()%}
                     <td class="tdd">{{el}}</td>
                 {% else %}
-                    <td class="td" contenteditable='true'>{{el}}</td>
+                    <td class="td">
+                        <input maxlength="2" oninput="this.value = this.value.toUpperCase()"/>
+                    </td>
                 {% endif %}
             {% else %}
                 <td class="tdd"></td>
             {% endif %}
         {% endfor %}
-</tr>
+    </tr>
 {% endfor %}
-     <div class="question">
-
-    </div>
 </table>
-{% endblock %}
 </div>
+     <div class="question">
+         <ol>
+        {% for ques in descr %}
+         <li>
+             <p>{{ques}}</p>
+         </li>
+         {% endfor %}
+         </ol>
+    </div>
+<table>
+    <td><h2 style="margin-top: 5px">Ответ: </h2></td>
+    <td><input style="margin-left: 30px" name="ans"></td>
+</table>
+<div class="margin-block">
+    <a class="button" href="/check">Проверить ответы</a>
+</div>
+    <p>{{res}}</p>
+{% endblock %}
+</form>
