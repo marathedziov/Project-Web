@@ -2,21 +2,6 @@
 {% block content %}
 <form method="POST">
 <link rel="stylesheet" href="static/css/crossword.css">
-<!--<div class="margin-block">-->
-<!--<table id="myTable"></table>-->
-
-<!--<script>-->
-<!--    var table = document.getElementById('myTable');-->
-
-<!--    for (var i = 0; i < 10; i++) {-->
-<!--        var row = table.insertRow();-->
-<!--        for (var j = 0; j < 10; j++) {-->
-<!--            var cell = row.insertCell();-->
-<!--            cell.id = 'cell_' + i + '_' + j;-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
-<!--</div>-->
 <div class="margin-block">
 <table class="table">
 {% for line in cross %}
@@ -24,15 +9,11 @@
         {% for el in line %}
             {% if el %}
                 {% if el.islower()%}
-                    <td class="td" style="border: 3px solid black">
-                        <input style="font-weight:bold;" maxlength="2" oninput="this.value = this.value.toUpperCase()"/>
-                    </td>
+                    <td class="td" style="border: 3px solid black"></td>
                 {% elif el.isdigit()%}
-                    <td class="tdd">{{el}}</td>
+                    <td class="tdd"><a href="/add_word/{{el}}">{{el}}</a></td>
                 {% else %}
-                    <td class="td">
-                        <input maxlength="2" oninput="this.value = this.value.toUpperCase()"/>
-                    </td>
+                    <td class="td"></td>
                 {% endif %}
             {% else %}
                 <td class="tdd"></td>
@@ -59,5 +40,5 @@
     <a class="button" href="/check">Проверить ответы</a>
 </div>
     <p>{{res}}</p>
-{% endblock %}
 </form>
+{% endblock %}

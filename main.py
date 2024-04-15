@@ -15,6 +15,8 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+guessed = []
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -50,7 +52,8 @@ def index():
 
 
 @app.route("/crossword1")
-def crossword1():
+def crossword():
+    print("1")
     matrix = [[''] * 9 for i in range(9)]
     db_sess = db_session.create_session()
     crossds = db_sess.query(Words).filter(Words.id_cross == 1)
@@ -77,7 +80,16 @@ def check():
     if request.method == 'POST':
         res = request.form['ans']
         return render_template("index.html", res=res)
-    return redirect('/')
+    return redirect('/crossword1')
+
+
+@app.route('crossword1/<int:id>', methods=['GET', 'POST'])
+def check_ans(id):
+    db_sess = db_session.create_session()
+    ans = db_sess.query(Words).filter(Words.id_cross == 1,
+                                      Words.id == id)
+    render_template('check.html', ans=ans)
+
 
 @app.route('/news', methods=['GET', 'POST'])
 @login_required
