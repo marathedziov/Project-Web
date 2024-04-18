@@ -53,23 +53,31 @@ def index():
 
 @app.route("/crossword1")
 def crossword():
-    print("1")
     matrix = [[''] * 9 for i in range(9)]
     db_sess = db_session.create_session()
     crossds = db_sess.query(Words).filter(Words.id_cross == 1)
     descr = list(map(lambda x: x.description, crossds))
 
     for ind, cross in enumerate(crossds):
+        global guessed
         word = cross.word_iron.split()
+        # guessed.append(word)
         x, y = map(int, cross.coords.split())
         place = int(cross.place)
+        f = False
+        if word in guessed:
+            f = True
         for i in range(len(word)):
+            cell = word[i]
+            if f:
+                cell = cell.lower()
             if i == 0:
-                matrix[y][x - 1] = str(ind + 1)
+                matrix[y][x - 1] = (str(ind + 1), 'num')
             if i == place:
-                matrix[y][x + i] = word[i].lower()
+                matrix[y][x + i] = (cell, 'bold_td')
+
             else:
-                matrix[y][x + i] = word[i]
+                matrix[y][x + i] = (cell, 'td')
 
     pprint.pprint(matrix)
     return render_template("index.html", cross=matrix, descr=descr)
@@ -83,12 +91,12 @@ def check():
     return redirect('/crossword1')
 
 
-@app.route('crossword1/<int:id>', methods=['GET', 'POST'])
+@app.route('/add_word/<int:id>', methods=['GET', 'POST'])
 def check_ans(id):
     db_sess = db_session.create_session()
     ans = db_sess.query(Words).filter(Words.id_cross == 1,
-                                      Words.id == id)
-    render_template('check.html', ans=ans)
+                                      Words.id == id).first()
+    return render_template('check.html', ans=ans)
 
 
 @app.route('/news', methods=['GET', 'POST'])

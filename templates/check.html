@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<link rel="stylesheet" href="static/css/crossword.css">
+<form method="POST">
 <div class="margin-block">
-    <a>{{ans.description}}</a>
+    <h2>{{ans.description}}</h2>
+    <p><input type="text" placeholder="Введите ответ"></p>
+    <a class="button" href="/crossword1">Ответить</a>
 </div>
+</form>
 {% endblock %}

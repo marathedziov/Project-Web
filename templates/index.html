@@ -1,22 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 <form method="POST">
-<link rel="stylesheet" href="static/css/crossword.css">
 <div class="margin-block">
-<table class="table">
+<table>
 {% for line in cross %}
     <tr>
         {% for el in line %}
             {% if el %}
-                {% if el.islower()%}
-                    <td class="td" style="border: 3px solid black"></td>
-                {% elif el.isdigit()%}
-                    <td class="tdd"><a href="/add_word/{{el}}">{{el}}</a></td>
+                {% if el[0].islower()%}
+                    <td class="{{el[-1]}}">{{el[0].upper()}}</td>
                 {% else %}
-                    <td class="td"></td>
+                    <td class="{{el[-1]}}"></td>
                 {% endif %}
             {% else %}
-                <td class="tdd"></td>
+                <td class="td" style="border: none"></td>
             {% endif %}
         {% endfor %}
     </tr>
