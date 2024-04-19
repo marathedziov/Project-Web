@@ -1,16 +1,17 @@
 .margin-block {
-        margin-top:50px;
+        margin-top: 5vh;
         text-align: center;
         }
 .margin-block table {
         border-collapse: collapse;
-        width: 100%;
+        width: 80vw;
+        height: 40vw;
         margin: auto;
         align: center;
         font-family: Tahoma;
         }
 .margin-block input {
-        margin-top: 50px;
+        margin-top: 5vh;
         width: 80%;
         height: 40px;
         text-align: center;
@@ -24,12 +25,14 @@
         width: 9%;
         border: 4px solid black;
         box-sizing: border-box;
+        font-weight: bold;
     }
 .num {
-       width: 9%;
+        width: 9%;
         border: none;
         box-sizing: border-box;
         text-align: right;
+        font-size: 120%;
     }
 .button {
   display: inline-block;

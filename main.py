@@ -16,6 +16,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 guessed = []
+cur_cross = 'crossword1'
 
 
 @login_manager.user_loader
@@ -53,10 +54,14 @@ def index():
 
 @app.route("/crossword1")
 def crossword():
+    global cur_cross
+    cur_cross = 'crossword1'
+
     matrix = [[''] * 9 for i in range(9)]
     db_sess = db_session.create_session()
     crossds = db_sess.query(Words).filter(Words.id_cross == 1)
     descr = list(map(lambda x: x.description, crossds))
+    ans = db_sess.query(Crosswords).filter(Crosswords.id == 1).first()
 
     for ind, cross in enumerate(crossds):
         global guessed
@@ -80,23 +85,39 @@ def crossword():
                 matrix[y][x + i] = (cell, 'td')
 
     pprint.pprint(matrix)
-    return render_template("index.html", cross=matrix, descr=descr)
+    return render_template("index.html", cross=matrix, descr=descr, ans=ans.word_ans_rus)
 
 
-@app.route('/check', methods=['GET', 'POST'])
-def check():
-    if request.method == 'POST':
-        res = request.form['ans']
-        return render_template("index.html", res=res)
-    return redirect('/crossword1')
+@app.route("/victory")
+def victory():
+    return render_template("victory.html")
 
 
-@app.route('/add_word/<int:id>', methods=['GET', 'POST'])
-def check_ans(id):
+@app.route(f'/check/<int:id>', methods=['POST', 'GET'])
+def check(id):
+    res = request.form.get(str(id)).upper().replace('АЕ', 'Ӕ')
+    word = request.form.get('word').split()
+    global guessed
+    if res == ''.join(word):
+        guessed.append(word)
+    return redirect(f'/{cur_cross}')
+
+
+@app.route('/add_word/<int:id>')
+def ans(id):
     db_sess = db_session.create_session()
     ans = db_sess.query(Words).filter(Words.id_cross == 1,
                                       Words.id == id).first()
-    return render_template('check.html', ans=ans)
+    return render_template('check.html', ans=ans, cur_cross=cur_cross)
+
+
+@app.route(f'/final_check', methods=['POST'])
+def final_check():
+    quest = request.form.get('quest').upper()
+    ans = request.form.get('ans')
+    if quest == ans:
+        return redirect('/victory')
+    return redirect(f'/{cur_cross}')
 
 
 @app.route('/news', methods=['GET', 'POST'])
