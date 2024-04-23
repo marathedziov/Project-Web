@@ -1,43 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+<title>Выбор категории</title>
 <div class="margin-block">
-<table>
-{% for line in cross %}
-    <tr>
-        {% for el in line %}
-            {% if el %}
-                {% if el[0].islower() %}
-                    <td class="{{el[-1]}}">{{el[0].upper()}}</td>
-                {% elif el[0].isdigit() %}
-                    <td class="{{el[-1]}}"><a href="/add_word/{{el[0]}}">{{el[0]}}</a></td>
-                {% else %}
-                    <td class="{{el[-1]}}"></td>
-                {% endif %}
-            {% else %}
-                <td class="td" style="border: none"></td>
-            {% endif %}
-        {% endfor %}
-    </tr>
-{% endfor %}
-</table>
+    <h1>Выберите категорию</h1>
 </div>
-     <div class="question">
-         <ol>
-        {% for ques in descr %}
-         <li>
-             <p>{{ques}}</p>
-         </li>
-         {% endfor %}
-         </ol>
+<form action="/crosswords" method="post">
+    {% for cat in cats%}
+    <div class="margin-block">
+        <button class="button" href="/crosswords" type="submit" value="{{cat.id}}" name="cat">
+            {{cat.category_rus}}
+        </button>
     </div>
-<form method="POST" action="/final_check">
-<table>
-    <td><h2 style="margin-top: 5px">Ответ: </h2></td>
-    <td><input type="text" style="margin-left: 30px" name="quest"></td>
-</table>
-<div class="margin-block">
-    <button class="button" type="submit" name="ans" value="{{ans}}">Проверить ответы</button>
-</div>
-    <p>{{res}}</p>
+    {% endfor %}
 </form>
 {% endblock %}

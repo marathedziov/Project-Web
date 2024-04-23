@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<title>Выбор кроссворда</title>
+<div class="margin-block">
+    <h1>Выберите кроссворд</h1>
+</div>
+{% for cross in crossds %}
+    <div class="margin-block">
+        <a class="button" href="/crosswords/{{cross.id}}">Кроссворд {{cross.id}}</a>
+    </div>
+{% endfor %}
+{% endblock %}

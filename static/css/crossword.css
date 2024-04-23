@@ -1,3 +1,13 @@
+@font-face {
+        font-family: "VAG World Bold";
+        src: url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.eot");
+        src: url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.eot?#iefix")format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.svg#VAG World Bold")format("svg");
+       }
+
 .margin-block {
         margin-top: 5vh;
         text-align: center;
@@ -8,7 +18,6 @@
         height: 40vw;
         margin: auto;
         align: center;
-        font-family: Tahoma;
         }
 .margin-block input {
         margin-top: 5vh;
@@ -41,11 +50,11 @@
   padding: 10%;
   border-radius: 30px;
   text-decoration: none;
-  font-family: Tahoma;
   font-size: 200%;
   width: 80%;
   line-height: 1;
   font-weight: 100;
+  border: none;
 }
 .question {
     margin-top: 30px;

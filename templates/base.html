@@ -9,7 +9,8 @@
     <title>Кроссворд осетинских слов</title>
     <link rel="stylesheet" href="/static/css/crossword.css">
 </head>
-<body class="body-select-level">
+<body class="body-select-level" style="font-family: VAG World">
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -38,16 +39,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/select_level">Меню</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/">На главную</a>
                 </li>
-                {% if current_user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/leader_board">список лидеров</a>
-                </li>
-                {% endif %}
             </ul>
         </div>
     </div>
