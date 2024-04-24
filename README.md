@@ -1,8 +1,6 @@
 # Project-Web ❤️
 
-<h2 align="center">
-Кроссворд осетинских слов
-</h2>
+<h2 align="center">Кроссворд осетинских слов <img src="https://github.com/marathedziov/Project-Web/assets/134272993/51d1350b-1434-4294-a3b4-f39dc9a3796b" height="25"/></h2>
 
 
 <h4 align="center"> 
@@ -32,8 +30,9 @@
 </h4>
 
 <p align="center">
-<img src=https://github.com/marathedziov/Project-Web/assets/134272993/32bc1f0a-5e02-465c-b948-3f92058acd11>
+<img src=https://github.com/marathedziov/Project-Web/assets/134272993/1181491a-dcc0-4b77-be5b-086d26f557e7 width="500">
 </p>
+
  
 <h4 align="center"> 
 База данных:
@@ -87,10 +86,10 @@
                 <p>Сам кроссворд</p>
             </li>
             <li>
-                <p>Клавиатура букв, с помощью которых можно удобно вносить буквы в кроссворд</p>
+               <p>Ссылки для ввода отывета на каждый вопрос</p>
             </li>
             <li>
-                <p>Поле для ввода ответа</p>
+                <p>Поле для ввода ответа на главный вопрос</p>
             </li>
         </ul>
     </li>
