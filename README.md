@@ -1,8 +1,6 @@
 # Project-Web ❤️
 
-<h2 align="center">
-Кроссворд осетинских слов
-</h2>
+<h2 align="center">Кроссворд осетинских слов <img src="https://github.com/marathedziov/Project-Web/assets/134272993/51d1350b-1434-4294-a3b4-f39dc9a3796b" height="25"/></h2>
 
 
 <h4 align="center"> 
@@ -32,31 +30,8 @@
 </h4>
 
 <p align="center">
-<img src=https://github.com/marathedziov/Project-Web/assets/134272993/32bc1f0a-5e02-465c-b948-3f92058acd11>
+<img src=https://github.com/marathedziov/Project-Web/assets/134272993/1181491a-dcc0-4b77-be5b-086d26f557e7 width="500">
 </p>
- 
-<h4 align="center"> 
-База данных:
-</h4>
-
-<p align="center">
-В проекте будет база данных слов.
-</p>
-  <p>Она включает следующие типы объектов:</p>
-        <ul>
-            <li>
-                <p>id слова (id)</p>
-            </li>
-            <li>
-                <p>Слово на осетинском языке (word)</p>
-            </li>
-            <li>
-                <p>Описание слова на русском языке (description)</p>
-            </li>
-            <li>
-                <p>Перевод этого слова на русский язык (translate)</p>
-            </li>
-        </ul>
 
 <h4 align="center">
 Для проекта используются следующие модули:
@@ -87,25 +62,114 @@
                 <p>Сам кроссворд</p>
             </li>
             <li>
-                <p>Клавиатура букв, с помощью которых можно удобно вносить буквы в кроссворд</p>
+               <p>Ссылки для ввода отывета на каждый вопрос</p>
             </li>
             <li>
-                <p>Поле для ввода ответа</p>
+                <p>Поле для ввода ответа на главный вопрос</p>
             </li>
         </ul>
     </li>
 </ol>
 
+
+<h4 align="center">Руководство администратора</h4>
+<p align="center">Для запуска сервера необходимо запустить файл server.py и перейти по адресу 127.0.0.1:5000. Кроссворды хранятся в базе данных crosswords.db. Она необходима для корректной работы программы. Для навбара используются иконка которая находится на пути static/img/ava.png, а также файл стиля crossword.css в static/css и шрифты в папке static/fonts</p>
+
+<h4 align="center">Руководство пользователя</h4>
 <h4 align="center">Игра будет состоять из нескольких страниц:</h4>
 <ol>
     <li>
+        <p>Страница выбора категории</p>
+        <img src=https://github.com/marathedziov/Project-Web/assets/134272993/515cea18-9b6f-4ad6-abf6-f5b74d920af6 width=300>
+    </li>
+    <li>
         <p>Страница выбора кроссворда (позже будет переработан дизайн)</p>
-        <img src=https://github.com/marathedziov/Project-Web/assets/134272993/01f1c369-5bbd-41a9-88e8-7da89442c9d6>
+        <img src=https://github.com/marathedziov/Project-Web/assets/134272993/01f1c369-5bbd-41a9-88e8-7da89442c9d6 width=300>
     </li>
     <li>
         <p>Страница для каждого отдельного кроссворда</p>
+        <img src=https://github.com/marathedziov/Project-Web/assets/134272993/eb47a8b3-f240-4a52-b1e7-c5664793f004 width=300>
+        <p>Для ввода слов в таблицу необходимо нажать на цифру рядом со строкой таблицы и ввести слово на осетинском языке</p>
+    </li>
+    <li>
+        <p>Страница ввода ответа слов на осетинском языке</p>
+        <img src=https://github.com/marathedziov/Project-Web/assets/134272993/862adc4e-060e-4dd6-a291-2569950eb864 width=300>
+    </li>
+    <li>
+        <p>Страница победы</p>
+        <img src=https://github.com/marathedziov/Project-Web/assets/134272993/ae634830-7f06-43b0-a190-f7951b757e4f width=300>
     </li>
 </ol>
 
-<h4 align="center">Руководство администратора</h4>
-<p align="center">Для запуска сервера необходимо запустить файл main.py и перейти по адресу 127.0.0.1:5000. Кроссворды хранятся в базе данных crosswords.db. Она необходима для корректной работы программы. Для навбара используются иконка которая находится на пути static/img/ava.png</p>
+<h4 align="center">Руководство программиста</h4>
+<h4 align="center"> 
+База данных:
+</h4>
+
+<p align="center">
+В проекте будет база данных слов.
+</p>
+  <p>Она включает следующие таблицы:</p>
+  <ol>
+       <li>
+        <p>categories</p>
+        <ul>
+            <li>
+                <p>id категории (id)</p>
+            </li>
+            <li>
+                <p>Категория на осетинском языке (category_iron)</p>
+            </li>
+            <li>
+                <p>Категория на русском языке (category_rus)</p>
+            </li>
+        </ul>
+       </li>
+       <li>
+        <p>crosswords</p>
+        <ul>
+            <li>
+                <p>id кроссворда (id)</p>
+            </li>
+            <li>
+                <p>Слово-ответ на осетинском языке (word_ans_iron)</p>
+            </li>
+            <li>
+                <p>Слово-ответ на русском языке (word_ans_rus)</p>
+            </li>
+            <li>
+                <p>id категории (id_category)</p>
+            </li>
+        </ul>
+       </li>
+       <li>
+        <p>words</p>
+        <ul>
+            <li>
+                <p>id слова (id)</p>
+            </li>
+            <li>
+                <p>Слово на осетинском языке (word_iron)</p>
+            </li>
+            <li>
+                <p>Описание слова на русском языке (description)</p>
+            </li>
+            <li>
+                <p>Слово на русском языке (word_rus)</p>
+            </li>
+            <li>
+                <p>Индекс буквы составляющей ответ (place)</p>
+            </li>
+            <li>
+                <p>Координаты первой буквы слова в таблице (coords)</p>
+            </li>
+            <li>
+                <p>id кроссворда (id_cross)</p>
+            </li>
+        </ul>
+       </li>
+  </ol>
+
+  <h4>Структура БД</h4>
+   <img src=https://github.com/marathedziov/Project-Web/assets/134272993/d4711e05-f772-473c-91cf-09c8e8475c29>
+  
