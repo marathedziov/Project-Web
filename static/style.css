@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Делаем контейнер по вертикали во всю высоту экрана */
+    flex-direction: column; /* Устанавливаем направление элементов в столбец */
+    width: 100%;
+}
+
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-dark .dropdown-toggle::after {
+    display: none;
+}
+
+.green-button {
+    padding: 1em 5em; /* Используем em для задания относительных размеров */
+    margin: 1em;
+    font-size: 2em;
+    background-color: #4CAF50; /* Зеленый цвет */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 0.5em;
+    width: 180px;
+/*    text-rendering: auto;*/
+    display: block;  Чтобы кнопки занимали всю ширину контейнера
+    /*text-align: center;*/
+}
+
+.green-button span {
+    display: none;
+}
+
+.green-button:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+}
+
+/* Медиа-запрос для адаптивности */
+@media screen and (max-width: 600px) {
+    .green-button {
+        width: 80%; /* Используем проценты для ширины кнопок */
+        font-size: 1.5em; /* Изменяем размер текста для маленьких экранов */
+    }
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; /* Делаем контейнер по вертикали во всю высоту экрана */
+    flex-direction: column; /* Устанавливаем направление элементов в столбец */
+}
+
+

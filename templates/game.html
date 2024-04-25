@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table_style.css') }}">
+
+</head>
+<body style='font-family: "VAG World Bold"'>
+    <div class="page">
+        <div class="input-form-container">
+        <form id="wordForm" action="/game/{{ letters }}" method="post">
+            <input type="text" id="word" name="word" placeholder="Дзырд" required>
+            <button type="submit">Submit</button>
+        </form>
+        </div>
+        <div class="table-container">
+                <table>
+                    <tbody>
+                    {% for i in range(entered_words|length) %}
+                        <tr>
+                            {% for j in range(word|length) %}
+                                <td style="background-color: {{color_map[i][j]}};">{{entered_words[i][j]}}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    {% for row in range(attemps) %}
+                    <tr>
+                            {% for i in range(letters) %}
+                        <td class="letter">=</td>
+                            {% endfor %}
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+        <div class="keyboard-container">
+            <div id="keyboard">
+                <div class="key-row">
+                    <div class="key">й</div>
+                    <div class="key">ц</div>
+                    <div class="key">у</div>
+                    <div class="key">к</div>
+                    <div class="key">е</div>
+                    <div class="key">н</div>
+                    <div class="key">г</div>
+                    <div class="key">ш</div>
+                    <div class="key">щ</div>
+                    <div class="key">з</div>
+                    <div class="key">х</div>
+                    <div class="key">ъ</div>
+                </div>
+                <div class="key-row">
+                    <div class="key">ф</div>
+                    <div class="key">ы</div>
+                    <div class="key">в</div>
+                    <div class="key">а</div>
+                    <div class="key">п</div>
+                    <div class="key">р</div>
+                    <div class="key">о</div>
+                    <div class="key">л</div>
+                    <div class="key">д</div>
+                    <div class="key">ж</div>
+                    <div class="key">э</div>
+                    <div class="key">æ</div>
+
+                </div>
+                <div class="key-row">
+                    <div class="key">я</div>
+                    <div class="key">ч</div>
+                    <div class="key">с</div>
+                    <div class="key">м</div>
+                    <div class="key">и</div>
+                    <div class="key">т</div>
+                    <div class="key">ь</div>
+                    <div class="key">б</div>
+                    <div class="key">ю</div>
+                    <div class="key delete">⌫</div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </div>
+</body>
+</html>

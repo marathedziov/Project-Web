@@ -1,0 +1,61 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #333;
+}
+
+.buttons {
+    margin-top: 20px;
+    gap: 5px;
+}
+
+button {
+
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+/* Стилизация таблицы */
+table {
+  width: 50%; /* Ширина таблицы на 50% экрана */
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+
+
+/* Стилизация ячеек */
+td {
+  width: 7vh;
+  height: 4vw;
+  padding: 0;
+  border: 1px solid #0a0704;
+}
+
+
+/* При наведении на строку */
+tr:hover {
+  background-color: #ddd;
+}
+
