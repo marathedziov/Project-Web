@@ -1,5 +1,8 @@
 # Project-Web ❤️
 
+https://ossetian-crosswords.glitch.me/
+https://piece--by--piece.glitch.me/
+
 <h2 align="center">
 Общая Пояснительная записка:
 </h2>
