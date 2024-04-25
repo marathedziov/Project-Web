@@ -1,7 +1,12 @@
 # Project-Web ❤️
 
+<h2 align="center">
 https://ossetian-crosswords.glitch.me/
+</h2>
+
+ <h2 align="center">
 https://piece--by--piece.glitch.me/
+</h2>
 
 <h2 align="center">
 Общая Пояснительная записка:
