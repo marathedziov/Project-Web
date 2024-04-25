@@ -74,7 +74,6 @@ def ans(id):
     print(session.get('cur_cross'))
     ans = db_sess.query(Words).filter(Words.id_cross == int(session.get('cur_cross')),
                                       Words.id == id).first()
-    print(ans)
     return render_template('check.html', ans=ans)
 
 
@@ -158,4 +157,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    app.run('127.0.0.1', port=5000)
+    app.run(host='0.0.0.0', port=8003)
