@@ -1,12 +1,12 @@
 @font-face {
-        font-family: "VAG World Bold";
-        src: url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.eot");
-        src: url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.eot?#iefix")format("embedded-opentype"),
-        url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.woff2")format("woff2"),
-        url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.woff")format("woff"),
-        url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.ttf")format("truetype"),
-        url("https://db.onlinewebfonts.com/t/6766d85eb675b9099cdf5b05d7333290.svg#VAG World Bold")format("svg");
-       }
+	font-family: 'VAG World Bold';
+	src: url('../fonts/vag_world_bold.eot'); /* IE 9 Compatibility Mode */
+	src: url('../fonts/vag_world_bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('../fonts/vag_world_bold.woff2') format('woff2'), /* Super Modern Browsers */
+		url('../fonts/vag_world_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('../fonts/vag_world_bold.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/vag_world_bold.svg#vag_world_bold') format('svg'); /* Chrome < 4, Legacy iOS */
+}
 
 .margin-block {
         margin-top: 5vh;
@@ -14,7 +14,7 @@
         }
 .margin-block table {
         border-collapse: collapse;
-        width: 80vw;
+        width: 90vw;
         height: 40vw;
         margin: auto;
         align: center;
@@ -26,18 +26,18 @@
         text-align: center;
     }
 .td {
-        width: 9%;
+        width: 10%;
         border: 1px solid black;
         box-sizing: border-box;
         }
 .bold_td {
-        width: 9%;
+        width: 10%;
         border: 4px solid black;
         box-sizing: border-box;
         font-weight: bold;
     }
 .num {
-        width: 9%;
+        width: 10%;
         border: none;
         box-sizing: border-box;
         text-align: right;

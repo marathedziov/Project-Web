@@ -1,5 +1,3 @@
-import json
-
 from flask import Flask, render_template, redirect, request, session
 from data import db_session
 from data.categories import Category
@@ -42,7 +40,7 @@ def chose_cross():
 @app.route("/crosswords/<int:id>")
 def crossword(id):
     session["cur_cross"] = id
-    matrix = [[''] * 9 for i in range(9)]
+    matrix = [[''] * 10 for i in range(10)]
     db_sess = db_session.create_session()
     words = db_sess.query(Words).filter(Words.id_cross == id)
     descr = list(map(lambda x: x.description, words))
@@ -61,7 +59,7 @@ def crossword(id):
             if f:
                 cell = cell.lower()
             if i == 0:
-                matrix[y][x - 1] = (str(ind + 1), 'num')
+                matrix[y][x - 1] = (str(ind + 1), cross.id, 'num')
             if i == place:
                 matrix[y][x + i] = (cell, 'bold_td')
             else:
@@ -73,8 +71,10 @@ def crossword(id):
 @app.route('/add_word<int:id>')
 def ans(id):
     db_sess = db_session.create_session()
-    ans = db_sess.query(Words).filter(Words.id_cross == 1,
+    print(session.get('cur_cross'))
+    ans = db_sess.query(Words).filter(Words.id_cross == int(session.get('cur_cross')),
                                       Words.id == id).first()
+    print(ans)
     return render_template('check.html', ans=ans)
 
 
@@ -154,9 +154,8 @@ def register():
 
 def main():
     db_session.global_init("db/crosswords.db")
-    app.run(port=8080, host='127.0.0.1')
 
 
 if __name__ == '__main__':
     main()
-
+    app.run('127.0.0.1', port=5000)

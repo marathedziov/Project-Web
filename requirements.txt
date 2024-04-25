@@ -1,4 +1,6 @@
 SQLAlchemy
-Werkzeug
-WTForms
-Flask
+werkzeug
+wtforms
+flask
+flask-wtf
+flask-login

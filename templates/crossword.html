@@ -15,7 +15,7 @@
                 {% if el[0].islower() %}
                     <td class="{{el[-1]}}">{{el[0].upper()}}</td>
                 {% elif el[0].isdigit() %}
-                    <td class="{{el[-1]}}"><a href="/add_word{{el[0]}}">{{el[0]}}</a></td>
+                    <td class="{{el[-1]}}"><a href="/add_word{{el[1]}}">{{el[0]}}</a></td>
                 {% else %}
                     <td class="{{el[-1]}}"></td>
                 {% endif %}
