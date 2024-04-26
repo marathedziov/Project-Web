@@ -8,6 +8,10 @@ https://ossetian-crosswords.glitch.me/
 https://piece--by--piece.glitch.me/
 </h2>
 
+ <h2 align="center">
+Ссылка на презентацию:	https://docs.google.com/presentation/d/1WvhxJOaAyAyeqKtgfYknTOH8H28AZY8f/edit?usp=drive_link&ouid=115768424762602802450&rtpof=true&sd=true 
+</h2>
+
 <h2 align="center">
 Общая Пояснительная записка:
 </h2>
